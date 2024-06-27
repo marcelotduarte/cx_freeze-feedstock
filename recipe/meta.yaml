@@ -41,7 +41,7 @@ test:
   imports:
     - cx_Freeze
   requires:
-    - pip
+    - python
     - pytest
     - pytest-cov
     - pytest-datafiles

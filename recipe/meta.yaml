@@ -50,8 +50,9 @@ test:
   source_files:
     - tests
   commands:
-    - cxfreeze --version
     - pip install -U pytest-datafiles
+    - pip install -U dmgbuild  # [osx]
+    - cxfreeze --version
     - pytest -nauto --no-cov || true
 
 about:

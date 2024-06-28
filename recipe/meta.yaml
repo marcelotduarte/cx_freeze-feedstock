@@ -49,6 +49,8 @@ test:
     - pytest-timeout
     - pytest-xdist
   source_files:
+    - cx_Freeze/icons
+    - samples
     - tests
   commands:
     - cxfreeze --version

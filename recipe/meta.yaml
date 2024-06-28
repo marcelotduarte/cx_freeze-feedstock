@@ -49,6 +49,7 @@ test:
     - pytest-timeout
     - pytest-xdist
   source_files:
+    - pyproject.toml
     - cx_Freeze/icons
     - samples
     - tests

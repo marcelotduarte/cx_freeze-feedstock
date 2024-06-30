@@ -12,6 +12,8 @@ source:
 build:
   number: 1
   script:
+    - {{ PYTHON }} -m pip install cabarchive  # [win]
+    - {{ PYTHON }} -m pip install dmgbuild    # [osx]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - cxfreeze = cx_Freeze.cli:main

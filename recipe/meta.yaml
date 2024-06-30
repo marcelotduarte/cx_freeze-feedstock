@@ -48,6 +48,7 @@ test:
     - pytest-mock
     - pytest-timeout
     - pytest-xdist
+    - pip
   source_files:
     - pyproject.toml
     - cx_Freeze/icons

@@ -12,6 +12,8 @@ source:
 build:
   number: 1
   script:
+    - {{ PYTHON }} -m pip install cabarchive  # [win]
+    - {{ PYTHON }} -m pip install dmgbuild    # [osx]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - cxfreeze = cx_Freeze.cli:main
@@ -48,15 +50,12 @@ test:
     - pytest-mock
     - pytest-timeout
     - pytest-xdist
-    - pip
   source_files:
     - pyproject.toml
     - cx_Freeze/icons
     - samples
     - tests
   commands:
-    - pip install -U dmgbuild  # [osx]
-    - pip install -U cabarchive
     - cxfreeze --version
     - pytest -nauto --no-cov
 

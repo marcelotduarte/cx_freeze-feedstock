@@ -12,6 +12,7 @@ source:
 build:
   number: 1
   script:
+    - set "PIP_NO_INDEX=False"  # [win and osx]
     - {{ PYTHON }} -m pip install cabarchive  # [win]
     - {{ PYTHON }} -m pip install dmgbuild    # [osx]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -57,6 +58,7 @@ test:
     - samples
     - tests
   commands:
+    - set "PIP_NO_INDEX=False"  # [win and osx]
     - pip install cabarchive  # [win]
     - pip install dmgbuild    # [osx]
     - cxfreeze --version

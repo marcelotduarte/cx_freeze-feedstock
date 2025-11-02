@@ -65,6 +65,7 @@ outputs:
         - setuptools >=78.1.1
       run:
         - python >={{ python_min }}
+        - freeze-core {{ core_version }}
         - setuptools >=78.1.1
         - packaging >=24.0
         - tomli >=2.0.1          # [py<311]
@@ -98,8 +99,8 @@ about:
   summary: Create standalone executables from Python scripts.
   description: |
     Creates standalone executables from Python scripts with the same
-    performance as the original script. It is cross-platform and should work on
-    any platform that Python runs on.
+    performance as the original script.
+    It is cross-platform and should work on any platform that Python runs on.
 
 extra:
   recipe-maintainers:

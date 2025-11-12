@@ -37,7 +37,7 @@ outputs:
       build:
         - python                              # [build_platform != target_platform]
         - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-        - {{ compiler("c") }}
+        - {{ compiler('c') }}
       host:
         - python
         - pip
@@ -61,14 +61,13 @@ outputs:
       commands:
         - cd freeze-core && coverage run
 
+  {% if win and py>=313 %}
   - name: {{ msi_name|lower }}
     version: {{ msi_version }}
     script: build-python-msilib.bat
     requirements:
       build:
-        skip: true                       # [not win]
-        skip: true                       # [py<313]
-        - {{ compiler("c") }}
+        - {{ compiler('c') }}
       host:
         - python
         - pip
@@ -86,6 +85,7 @@ outputs:
         - python-msilib/tests
       commands:
         - cd python-msilib && coverage run
+  {% endif %}
 
   - name: {{ name|lower }}
     version: {{ version }}

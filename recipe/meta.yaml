@@ -3,7 +3,7 @@
 {% set core_name = "freeze-core" %}
 {% set core_version = "0.4.0" %}
 {% set msi_name = "python-msilib" %}
-{% set msi_version = "0.4.1" %}
+{% set msi_version = "0.4.2" %}
 
 package:
   name: {{ name|lower }}-feedstock
@@ -15,7 +15,7 @@ source:
     folder: freeze-core
 
   - url: https://pypi.org/packages/source/{{ msi_name[0] }}/{{ msi_name }}/{{ msi_name|replace("-", "_") }}-{{ msi_version }}.tar.gz
-    sha256: caad1cb21901ffb9cbb1e568a147b4526b59f6cc90e1448b88026f7fb9dab678
+    sha256: 4655bdfde7be6635b4ef287576a0103684568c5e335dac9e1208ccb6506b774c
     folder: python-msilib
 
   - git_url: https://github.com/marcelotduarte/cx_Freeze.git
@@ -64,11 +64,11 @@ outputs:
 
   - name: {{ msi_name|lower }}
     version: {{ msi_version }}
-    script: build-python-msilib.bat  # [win]
-    skip: true                       # [not win]
-    skip: true                       # [py<313]
+    script: build-python-msilib.bat
     requirements:
       build:
+        skip: true                       # [not win]
+        skip: true                       # [py<313]
         - {{ compiler("c") }}
         - {{ stdlib("c") }}
       host:
@@ -77,7 +77,6 @@ outputs:
         - setuptools >=78.1.1
       run:
         - python
-        - libxcrypt              # [linux and py<311]
     test:
       imports:
         - msilib
@@ -105,6 +104,7 @@ outputs:
       run:
         - python
         - freeze-core >={{ core_version }}
+        - python-msilib >={{ msi_version }}  # [win and py>=313]
         - setuptools >=78.1.1
         - packaging >=24.0
         - tomli >=2.0.1          # [py<311]

@@ -1,9 +1,9 @@
 {% set name = "cx_Freeze" %}
-{% set version = "8.5.0" %}
+{% set version = "8.6.0" %}
 {% set core_name = "freeze-core" %}
-{% set core_version = "0.4.0" %}
+{% set core_version = "0.6.0" %}
 {% set msi_name = "python-msilib" %}
-{% set msi_version = "0.4.2" %}
+{% set msi_version = "0.5.0" %}
 
 package:
   name: {{ name|lower }}-feedstock
@@ -42,10 +42,10 @@ outputs:
         - python
         - pip
         - setuptools >=78.1.1
-        - cx_logging >=3.1       # [win]
+        - cx_logging >=3.2       # [win]
       run:
         - python
-        - filelock >=3.15.3
+        - filelock >=3.20.3
         - cabarchive >=0.2.4     # [win]
         - striprtf >=0.0.26      # [win]
         - libxcrypt              # [linux and py<311]
@@ -104,12 +104,12 @@ outputs:
         - freeze-core >={{ core_version }}
         - python-msilib >={{ msi_version }}  # [win and py>=313]
         - setuptools >=78.1.1
-        - packaging >=24.0
+        - packaging >=25.0
         - tomli >=2.0.1          # [py<311]
-        - filelock >=3.15.3      # [linux]
+        - filelock >=3.20.3      # [linux]
         - patchelf >=0.14,<0.18  # [linux]
         - dmgbuild >=1.6.1       # [osx]
-        - cx_logging >=3.1       # [win]
+        - cx_logging >=3.2       # [win]
         - py-lief >=0.15.1       # [win]
     test:
       imports:
